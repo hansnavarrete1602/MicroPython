@@ -1,0 +1,21 @@
+from machine import I2C, Pin
+import PCF8591_Class
+import time
+
+ch_0 = '\x00'
+ch_1 = '\x01'
+ch_2 = '\x02'
+ch_3 = '\x03'
+
+# construct an I2C bus
+gpio_scl = Pin(5)
+gpio_sda = Pin(4)
+i2c = I2C(scl=gpio_scl, sda=gpio_sda, freq=100000)
+
+PCF = PCF8591_Class.PCF8591_I2C(i2c)
+
+while True:
+  data = PCF.Analog_read(ch_2)
+  print(type(data[0]))
+  print('Dato recibido: ' + str(ord(chr(data[0]))))
+  time.sleep(1)

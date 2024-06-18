@@ -1,0 +1,15 @@
+#PCF8591_ADC_CH0 0x0 thermistor
+#PCF8591_ADC_CH1 0x1 photo-voltaic cell
+#PCF8591_ADC_CH2 0x2 nothing
+#PCF8591_ADC_CH3 0x3 potentiometer
+
+PCF8591 = 0x48 # I2C bus address
+
+class PCF8591_I2C():
+  def __init__(self, i2c, addr=PCF8591):
+    self.i2c = i2c
+    self.addr = addr
+  
+  def Analog_read(self, channel):
+    self.i2c.writeto(self.addr, channel)
+    return self.i2c.readfrom(self.addr, 1)

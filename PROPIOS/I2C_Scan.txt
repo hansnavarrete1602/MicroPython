@@ -1,0 +1,6 @@
+from machine import I2C, Pin
+gpio_scl = Pin(5)
+gpio_sda = Pin(4)
+i2c = I2C(scl=gpio_scl, sda=gpio_sda, freq=100000)
+print(type(i2c.scan()))
+print(i2c.scan())

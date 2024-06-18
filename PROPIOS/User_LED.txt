@@ -1,0 +1,27 @@
+#import machine
+#led = machine.Pin(2,machine.Pin.OUT)
+
+"""
+from machine import Pin
+import time
+
+led = Pin(2,Pin.OUT)
+
+while True:
+  #time.sleep() -> seconds
+  led.on()
+  time.sleep_ms(1000)
+  led.off()
+  time.sleep_us(1000000)
+  """
+  
+from machine import Pin
+from time import sleep_ms
+
+led = Pin(2,Pin.OUT)
+
+while True:
+  led.value(1)
+  sleep_ms(1000)
+  led.value(0)
+  sleep_ms(1000)
